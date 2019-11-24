@@ -5,7 +5,7 @@ import user_manager
 """
 Author:     Yuma Lee
 Purpose:    Updates the milestone progress, Adds equipment into Hero's inventory
-Parameters: user_id : int
+Parameters: user_id : intmyUser 
 Returns:    If method work as expected:   equipment_object  
             If method fails to function:  False
 """
@@ -18,7 +18,7 @@ def reached_milestone(userId):
         return [6]
 
     # Increment and add the user milestone
-    sql_statement = "UPDATE myUser SET milestone = %s WHERE id = '" + str(userId) + "';"
+    sql_statement = "UPDATE myuser SET milestone = %s WHERE id = '" + str(userId) + "';"
     data_values = [str(milestone_number + 1)]
     mysql_helper.sql_operation(sql_statement, data_values)
 
@@ -37,7 +37,7 @@ def reached_milestone(userId):
 
 def get_milestone_number(userId):
     # Select milestone number from database
-    sql_statement = "SELECT milestone FROM myUser WHERE id = '" + str(userId) + "';"
+    sql_statement = "SELECT milestone FROM myuser WHERE id = '" + str(userId) + "';"
     record = mysql_helper.select_statement(sql_statement)
     if len(record) is 0:
         return "Invalid userId"
