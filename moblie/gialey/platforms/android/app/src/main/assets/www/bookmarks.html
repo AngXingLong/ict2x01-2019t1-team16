@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/framework.css">
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <style>
+      ol, ul{
+        margin-left:0;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="header header-static header-logo-center">
+          <a class="header-title">Navigation</a>
+          <a href="home.html" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      </div>
+    <ul id='bookmark_list' class="list-group list-group-flush"></ul>
+
+    <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+        <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="index-components.html"><i class="fa fa-star"></i><span>Features</span></a>
+        <a href="index-pages.html" class="active-nav"><i class="fa fa-heart"></i><span>Pages</span></a>
+        <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
+        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+        <div class="clear"></div>
+      </div>
+  </body>
+</html>
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script src="scripts/jquery-ui.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/sweetalert2@9.js"></script>
+<script src="scripts/moment.min.js"></script>
+<script>
+
+var response;
+generateBookMarks();
+
+function post_to_server(url_param, post_data){
+    var base_url = "https://ict2101gialey.herokuapp.com/" + url_param;
+    console.log("URL to send:" + base_url);
+    console.log("Data to send: " + JSON.stringify(post_data));
+    return new Promise(resolve=>{
+        $.ajax({
+        type : 'POST',
+        url : base_url,
+        data: post_data
+    })
+    .done(function(data) {
+        console.log(data);
+        resolve(data) 
+        });
+    })
+}
+
+async function generateBookMarks(){
+  let data = {};
+  data.userID = localStorage.userID;
+  response = await post_to_server("get_bookmarks", data);
+
+  let html = "";
+
+  if(response['ERROR_CODE'] == 0){
+
+    for (let i = 0; i < response['DETAILS'].length; i++) {
+      let r = response['DETAILS'][i];
+      html +=  '<li class="list-group-item d-flex justify-content-between align-items-center" >';
+      html += '<div onclick="setBookMark('+i+')"><h5>'+ r['BOOKMARK_NAME'] +'</h5>';
+      html += 'Start: '+ r['STARTING_ADDR'] +' <br>';
+      html += 'End: '+ r['ENDING_ADDR'] +'<br></div>';
+      html += '<button onclick="deleteBookMark('+i+')"type="button" class="btn btn-danger">';
+      html += '<span class="badge"><i class="fas fa-trash-alt"></i></span>';
+      html += '</button>';
+      html += '</li>';
+    }
+    document.getElementById("bookmark_list").innerHTML = html;
+  }
+
+}
+async function deleteBookMark(index){
+  let data = {};
+  data.userID = localStorage.userID;
+  data.bookmark_name = response['DETAILS'][index]['BOOKMARK_NAME'];
+  response = await post_to_server("deleteBookmark", data);
+
+  if(response['ERROR_CODE'] == 0){
+    Swal.fire({
+      icon: 'success',
+      title: 'Bookmark Deleted',
+      text: 'Bookmark has been successfully deleted'
+    });
+
+  }
+  else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Unable to delete bookmark'
+    });
+  }
+
+  generateBookMarks();
+
+}
+function setBookMark(index){
+  localStorage.startAddress = response['DETAILS'][index]['STARTING_ADDR'];
+  localStorage.endAddress = response['DETAILS'][index]['ENDING_ADDR'];
+  window.location.href = 'navigation.html';
+}
+
+
+
+
+</script>
