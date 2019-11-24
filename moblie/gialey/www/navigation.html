@@ -305,7 +305,7 @@
   if (localStorage.getItem("startAddress") != null) {
     document.getElementById("route_origin").value = localStorage.startAddress;
     document.getElementById("route_destination").value = localStorage.endAddress;
-
+    routemanager.currentLocationSetted = true;
     localStorage.removeItem("startAddress");
     localStorage.removeItem("endAddress");  
   }
