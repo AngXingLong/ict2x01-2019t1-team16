@@ -22,13 +22,13 @@ class mileStoneView{
   }
   
   resetStepProgress(){
-    
+    /*
     localStorage.lastMileStoneUpdate = lastMileStoneUpdate;
     localStorage.mileStonesCovered = 0;
     localStorage.stepsCovered = 0;
     this.displayCountDownSet = false;
     clearInterval(this.displayCountDown); 
-
+*/
     var lastMileStoneUpdate = moment(localStorage.lastMileStoneUpdate);
 
     if (lastMileStoneUpdate.isValid() == false){
@@ -195,9 +195,6 @@ class RouteManager {
         }else{
           document.getElementById("direction_distance").innerHTML = " | " + (distanceToCheckpoint * 1000).toFixed(0) + " Meters";
         }
-
-        
-
           for (let j = 0; j < oThis.routeInstruction.length; j++){
             routeInstructionNode = new Node(oThis.routeInstruction[j].end_location.lng(), oThis.routeInstruction[j].end_location.lat(), 'undefined', 'undefined');
   
@@ -445,9 +442,7 @@ class RouteManager {
 
   approximate(node1,node2){
 
-    //if within 100m return true
-    //console.log("dis diff:" + this.calulateDistance(node1, node2));
-    //console.log(0.1 >= this.calulateDistance(node1, node2));
+    //if within 50m return true
     if(0.05  >= this.calulateDistance(node1, node2) ){
       return true;
     }

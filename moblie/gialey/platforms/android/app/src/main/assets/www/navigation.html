@@ -59,12 +59,29 @@
       <div id="map"></div>
     </div>
     <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
-        <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="index-components.html"><i class="fa fa-star"></i><span>Features</span></a>
-        <a href="index-pages.html" class="active-nav"><i class="fa fa-heart"></i><span>Pages</span></a>
-        <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
-        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
         <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="navigation.html"
+          }
+          function expedition(){
+            window.location.href="expedition.html"
+          }
+          function equipment(){
+            window.location.href="equipment.html"
+          }
+          function marketplace(){
+            window.location.href="marketplace.html"
+          }
+          function rewards(){
+            window.location.href="rewards.html"
+          }
+        </script>
       </div>
 
 
@@ -123,7 +140,11 @@
 <script src="scripts/googlemaps.js"></script>
 
 <script>
-  localStorage.userID = 14;
+    var username = localStorage.username;
+    var age = localStorage.age;
+    var email = localStorage.email;
+    var mobile_number = localStorage.mobile_number;
+    var userID = localStorage.userID;
   var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
         center: {lat: 1.3521, lng: 103.8198},
@@ -288,11 +309,4 @@
     localStorage.removeItem("startAddress");
     localStorage.removeItem("endAddress");  
   }
-
-
-
- 
-
-
-
 </script>

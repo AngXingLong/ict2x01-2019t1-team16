@@ -11,23 +11,67 @@
     <style>
       ol, ul{
         margin-left:0;
-      }
-    </style>
+      } 
+
+      .loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  position: fixed;
+  left:50%;
+  top: 50%;
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: -40px; /* Negative half of height. */
+  margin-left: -40px; /* Negative half of width. */
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
   </head>
   <body>
+      <div class="loader" id="spinner" style="display:none"></div>
       <div class="header header-static header-logo-center">
-          <a class="header-title">Navigation</a>
-          <a href="home.html" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+          <a class="header-title">Bookmarks</a>
+          <a href="#" onclick="home()" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+          <script>
+            function home(){
+              window.location.href = "/home.html"
+            }
+          </script>
+          <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+          ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
       </div>
     <ul id='bookmark_list' class="list-group list-group-flush"></ul>
 
     <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
-        <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
-        <a href="index-components.html"><i class="fa fa-star"></i><span>Features</span></a>
-        <a href="index-pages.html" class="active-nav"><i class="fa fa-heart"></i><span>Pages</span></a>
-        <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a>
-        <a href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
         <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="/navigation.html"
+          }
+          function expedition(){
+            window.location.href="/expedition.html"
+          }
+          function equipment(){
+            window.location.href="/equipment.html"
+          }
+          function marketplace(){
+            window.location.href="/marketplace.html"
+          }
+          function rewards(){
+            window.location.href="/rewards.html"
+          }
+        </script>
       </div>
   </body>
 </html>
@@ -42,10 +86,23 @@
 <script src="scripts/moment.min.js"></script>
 <script>
 
+  var spinner = document.getElementById("spinner")
+  // This is to save the number of calls from the API
+  var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+      
 var response;
 generateBookMarks();
 
 function post_to_server(url_param, post_data){
+    spinner.style.display = "block"
     var base_url = "https://ict2101gialey.herokuapp.com/" + url_param;
     console.log("URL to send:" + base_url);
     console.log("Data to send: " + JSON.stringify(post_data));
@@ -56,6 +113,7 @@ function post_to_server(url_param, post_data){
         data: post_data
     })
     .done(function(data) {
+      spinner.style.display = "none"
         console.log(data);
         resolve(data) 
         });
@@ -65,7 +123,7 @@ function post_to_server(url_param, post_data){
 async function generateBookMarks(){
   let data = {};
   data.userID = localStorage.userID;
-  response = await post_to_server("get_bookmarks", data);
+  response = await post_to_server("get_bookmarks/", data);
 
   let html = "";
 
@@ -90,7 +148,7 @@ async function deleteBookMark(index){
   let data = {};
   data.userID = localStorage.userID;
   data.bookmark_name = response['DETAILS'][index]['BOOKMARK_NAME'];
-  response = await post_to_server("deleteBookmark", data);
+  response = await post_to_server("deleteBookmark/", data);
 
   if(response['ERROR_CODE'] == 0){
     Swal.fire({
@@ -98,7 +156,7 @@ async function deleteBookMark(index){
       title: 'Bookmark Deleted',
       text: 'Bookmark has been successfully deleted'
     });
-
+    generateBookMarks();
   }
   else{
     Swal.fire({
