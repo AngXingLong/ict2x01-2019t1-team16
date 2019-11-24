@@ -6,7 +6,7 @@
       }
       #map_wrapper{
         position: relative;
-        height: 100%;
+        height: calc(100% - 80px);
         width: 100%;
         left:-100%;
       }
@@ -138,9 +138,18 @@
       .adp-warnbox{
         display:none;
       }
+      #route_list li{
+        margin-left:0;
+
+      }
+      ol, ul{
+        margin-left:0;
+      }
+
+    
 
         
-    }
+    
 
 
     
