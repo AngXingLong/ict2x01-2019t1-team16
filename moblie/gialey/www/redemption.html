@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from www.enableds.com/products/stickymobile/light/page-vcard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Oct 2019 11:36:38 GMT -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>GiaLey</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i"
+    rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <link rel="stylesheet" type="text/css" href="styles/framework.css" />
+  <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css" />
+  <style>
+      .loader {
+border: 8px solid #f3f3f3; /* Light grey */
+position: fixed;
+left:50%;
+top: 50%;
+border-top: 8px solid #3498db; /* Blue */
+border-radius: 50%;
+width: 80px;
+height: 80px;
+margin-top: -40px; /* Negative half of height. */
+margin-left: -40px; /* Negative half of width. */
+animation: spin 2s linear infinite;
+z-index: 9999;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+ </style>
+
+</head>
+
+<body class="theme-light" data-background="none" data-highlight="red2">
+    <div class="loader" id="spinner" style="display:none"></div>
+  <div id="page">
+    <div id="page-preloader">
+      <div class="loader-main">
+        <div class="preload-spinner border-highlight"></div>
+      </div>
+    </div>
+    <div class="header header-fixed header-logo-center">
+      <a href="index.html" class="header-title">Reward Code</a>
+      <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+          ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
+    </div>
+    <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+        <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="/navigation.html"
+          }
+          function expedition(){
+            window.location.href="/expedition.html"
+          }
+          function equipment(){
+            window.location.href="/equipment.html"
+          }
+          function marketplace(){
+            window.location.href="/marketplace.html"
+          }
+          function rewards(){
+            window.location.href="/rewards.html"
+          }
+        </script>
+    </div>
+    <div id="menu-cookie-modal" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small"
+      data-menu-height="250" data-menu-width="310" data-menu-effect="menu-over" data-menu-select="page-components">
+      <div class="top-30 boxed-text-huge">
+        <h2 class="uppercase bold">We're using cookies</h2>
+        <p class="under-heading color-highlight bottom-20">
+          To make your experience awesome!
+        </p>
+        <p class="center-text-huge">
+          Our page uses cookies to make your overall experience better, faster
+          and smoother.
+        </p>
+
+        <a href="#"
+          class="close-menu button button-s button-center-large button-round-medium shadow-large bg-highlight">Accept</a>
+      </div>
+    </div>
+    <div class="page-content header-clear">
+      <div data-height="300" class="caption shadow-large caption-margins top-30 round-medium shadow-huge">
+        <div class="caption-top top-30">
+          <h1 class="center-text color-white bolder fa-4x" id="reward_title" style="line-height: 1"></h1>
+          <h2 class="center-text color-white bolder fa-3x" id="voucher_code" style="border-top: 5px solid white; border-bottom: 5px solid white; line-height: 1"></h2>
+        </div>
+        <div class="caption-bottom" style="padding: 20px 20px 20px 20px">
+          <!-- <div class="one-third" style="height: 25px">
+            <ul class="icon-list">
+              <li style="color:#fff"><i class="fa fa-coins color-white"></i>3000</li>
+            </ul>
+          </div> -->
+          <div class="center-text" style="height: 70px">
+            <b style="color: white">Terms and Conditions</b>
+            <p style="font-size: 10px; line-height: 1">Each claimant is entitled to one coupon per accommodation establishment. Coupons are not transferable and are not redeemable for cash and cannot be combined with any other coupons or any other offer or discounts or promotions offered by Gialey!</p>
+              <!-- <li style="color:#fff"><i class="fa fa-shoe-prints color-white"></i>200 Steps</li> -->
+          </div>
+          <!-- <div class="one-third last-column" style="height: 25px">
+            <ul class="icon-list">
+              <li style="color:#fff"><i class="fa fa-superpowers color-white"></i>2.6K</li>
+            </ul>
+          </div> -->
+        </div>
+        <div class="caption-overlay bg-black opacity-80"></div>
+        <div class="caption-bg bg-14"></div>
+      </div>
+
+      <div style="background-color:rgb(0, 0, 0); padding:20px; margin: -20px 15px 0px 15px; border-radius: 12px; ">
+        <div class="center-text" style = "font-size: 20px; color: white; margin-top:5px;"> Code expires at <span id="time"></span></div>
+      </div>
+      
+     
+
+    </div>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/plugins.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        
+        // var today = new Date();
+        // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        // console.log(time)
+      // Fetch items from session variables.
+      var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+
+      console.log(username, age, email, mobile_number, userID)
+
+        loaddetails();
+        // var reward_obj = JSON.parse(localStorage.getItem('reward_obj'));
+      
+
+
+        window.setTimeout(function () {
+            update_success_alert();
+            setInterval(() => { window.location.href = "home.html" }, 2000)}, 300000);
+        
+
+      async function loaddetails(){
+        var reward_obj = JSON.parse(localStorage.getItem('reward_obj'))
+        let response = await post_to_server('get_endtime/', {
+          "UserID": userID
+          , "VoucherID": reward_obj["VOUCHER_ID"]
+        })
+        reward_obj["END_TIME"] = response["DETAILS"]
+        console.log(reward_obj["END_TIME"])
+        localStorage.setItem('reward_obj', JSON.stringify(reward_obj))
+        reward_obj = JSON.parse(localStorage.getItem('reward_obj'))
+        console.log(reward_obj)
+        document.getElementById("reward_title").innerHTML = reward_obj["REWARD_NAME"]
+        document.getElementById("voucher_code").innerHTML = "CODE:" + reward_obj["VOUCHER_ID"]
+        document.getElementById("time").innerHTML = reward_obj["END_TIME"]
+        console.log(reward_obj["END_TIME"])
+        reward_obj["END_TIME"]
+
+        console.log(reward_obj)
+        console.log(reward_obj["REWARD_DESCRIPTION"])
+        console.log(reward_obj["END_TIME"])
+      }
+
+      function post_to_server(url_param, post_data) {
+        var spinner = document.getElementById("spinner")
+        spinner.style.display = "block"
+
+
+        var base_url = "https://ict2101gialey.herokuapp.com/" + url_param
+        console.log("URL to send:" + base_url)
+        console.log("Data to send: " + post_data)
+        return new Promise(resolve => {
+          $.ajax({
+            type: 'POST',
+            url: base_url,
+            data: post_data
+          })
+            .done(function (data) {
+              spinner.style.display = "none"
+              console.log(data);
+              resolve(data)
+            });
+        })
+      }
+
+
+      // Fetch the elements
+       // This is to save the number of calls from the API
+      var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+      // Binding event listeners
+     // update_btn.addEventListener("click", update_user_details)
+
+      // Set the placeholders
+      document.getElementById("username_lbl").innerHTML = username
+      document.getElementById("age_lbl").innerHTML = age
+      document.getElementById("email_lbl").innerHTML = email
+      document.getElementById("phone_lbl").innerHTML = mobile_number
+
+
+      async function update_user_details() {
+        variable_list = { "emailAddress": email_tb.value, "contactNumber": mobile_number_tb.value }
+        variable_list = JSON.stringify(variable_list)
+        console.log("Attempting to update user details");
+        console.log(variable_list);
+        response = await post_to_server("updateUserDetails/", { "details": variable_list, "userID": userID })
+        if (response["ERROR_CODE"] == 0) {
+          // Show modal.
+          update_success_alert()
+          response = await post_to_server("getUser/", { "userID": userID })
+          // Update local storage
+          localStorage.mobile_number = response["MOBILE_NUMBER"]
+          localStorage.email = response["EMAIL"]
+
+          // Update Views
+          document.getElementById("email_lbl").innerHTML = response["EMAIL"]
+          document.getElementById("phone_lbl").innerHTML = response["MOBILE_NUMBER"]
+        }
+      }
+
+      function update_success_alert() {
+        Swal.fire({
+          icon: 'success',
+          title: 'Update Successful',
+          text: 'Your details have been updated successfully!'
+        })
+      }
+    </script>
+
+</html>
