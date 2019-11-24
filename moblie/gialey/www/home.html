@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from www.enableds.com/products/stickymobile/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Oct 2019 11:34:35 GMT -->
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <title>StickyMobile</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/framework.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/css/fontawesome-all.min.css"
+    />
+  </head>
+
+  <body class="theme-light" data-background="none" data-highlight="red2">
+    <div id="page">
+      <div id="page-preloader">
+        <div class="loader-main">
+          <div class="preload-spinner border-highlight"></div>
+        </div>
+      </div>
+      <div class="header header-fixed header-logo-center">
+        <a href="index.html" class="header-title">Main Menu</a>
+           <a href="#" onclick=logout() data-toggle-theme-switch class="header-icon header-icon-1"
+          ><i class="fas fa-sign-out-alt"></i
+        ></a>
+        <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+        ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
+      </div>
+      <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+          <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+          <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+          <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+          <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+          <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+          <div class="clear"></div>
+          <script>
+            function navigation(){
+              window.location.href="/navigation.html"
+            }
+            function expedition(){
+              window.location.href="/expedition.html"
+            }
+            function equipment(){
+              window.location.href="/equipment.html"
+            }
+            function marketplace(){
+              window.location.href="/marketplace.html"
+            }
+            function rewards(){
+              window.location.href="/rewards.html"
+            }
+          </script>
+        </div>
+
+      <div class="page-content header-clear-medium">
+
+        <div class="content">
+            <div class="one-half">
+                <a
+                  href="/navigation.html"
+                  data-height="220"
+                  class="caption round-medium shadow-huge bottom-10"
+                >
+                  <div class="caption-center center-text">
+                    <i
+                      style="color:#D32F2F"
+                      class="fa fa-map-marker fa-3x top-15 bottom-20"
+                    ></i>
+                    <h1 class="color-theme bolder bottom-5">Start Navigation</h1>
+                    <p class="color-highlight under-heading bottom-50 font-11">
+             
+                    </p>
+                  </div>
+                  <div class="caption-bottom center-text">
+                    <p class="bottom-10 font-10 color-theme opacity-30">
+                      Tap to View
+                    </p>
+                  </div>
+                  <div class="caption-overlay bg-theme"></div>
+                </a>
+              </div>
+              <div class="one-half last-column">
+                <a
+                  href="/bookmarks.html"
+                  data-height="220"
+                  class="caption round-medium shadow-huge bottom-10"
+                >
+                  <div class="caption-center center-text">
+                    <i
+                      style="color:#D32F2F"
+                      class="fa fa-bookmark fa-3x top-15 bottom-20"
+                    ></i>
+                    <h1 class="color-theme bolder bottom-0">Bookmarked Routes</h1>
+                    <p class="color-highlight under-heading bottom-50 font-11">
+                 
+                    </p>
+                  </div>
+                  <div class="caption-bottom center-text">
+                    <p class="bottom-10 font-10 color-theme opacity-30">
+                      Tap to View
+                    </p>
+                  </div>
+                  <div class="caption-overlay bg-theme"></div>
+                </a>
+              </div>
+          </div>
+          <div class="clear"></div>
+          <div class="content">
+              <div class="one-half">
+                  <a
+                    href="profile.html"
+                    data-height="220"
+                    class="caption round-medium shadow-huge bottom-10"
+                  >
+                    <div class="caption-center center-text">
+                      <i
+                        style="color:#D32F2F"
+                        class="fa fa-user fa-3x top-15 bottom-20"
+                      ></i>
+                      <h1 class="color-theme bolder bottom-0">View Profile</h1>
+                      <p class="color-highlight under-heading bottom-50 font-11">
+                      
+                      </p>
+                    </div>
+                    <div class="caption-bottom center-text">
+                      <p class="bottom-10 font-10 color-theme opacity-30">
+                        Tap to View
+                      </p>
+                    </div>
+                    <div class="caption-overlay bg-theme"></div>
+                  </a>
+                </div>
+                <div class="one-half last-column" onclick="equipment_redirect()">
+                  <a
+                    href="equipment.html"
+                    data-height="220"
+                    class="caption round-medium shadow-huge bottom-10"
+                  >
+                    <div class="caption-center center-text">
+                      <i
+                        style="color:#D32F2F"
+                        class="fa fa-gamepad fa-3x top-15 bottom-20"
+                      ></i>
+                      <h1 class="color-theme bolder bottom-0">Manage Avatar</h1>
+                      <p class="color-highlight under-heading bottom-50 font-11">
+      
+                      </p>
+                    </div>
+                    <div class="caption-bottom center-text">
+                      <p class="bottom-10 font-10 color-theme opacity-30">
+                        Tap to View
+                      </p>
+                    </div>
+                    <div class="caption-overlay bg-theme"></div>
+                  </a>
+                </div>
+          </div>
+          <div class="clear"></div>
+          <div class="content">
+              <div class="one-half">
+                  <a
+                    onclick="rewards_redirect()"
+                    href="#"
+                    data-height="220"
+                    class="caption round-medium shadow-huge bottom-10"
+                  >
+                    <div class="caption-center center-text">
+                      <i
+                        style="color:#D32F2F"
+                        class="fa fa-gift fa-3x top-15 bottom-20"
+                      ></i>
+                      <h1 class="color-theme bolder bottom-0">View Rewards</h1>
+                      <p class="color-highlight under-heading bottom-50 font-11">
+                        
+                      </p>
+                    </div>
+                    <div class="caption-bottom center-text">
+                      <p class="bottom-10 font-10 color-theme opacity-30">
+                        Tap to View
+                      </p>
+                    </div>
+                    <div class="caption-overlay bg-theme"></div>
+                  </a>
+                </div>
+                <div class="one-half last-column">
+                  <a
+                    onclick="marketplace_redirect()"
+                    data-height="220"
+                    class="caption round-medium shadow-huge bottom-10">
+                    <div class="caption-center center-text">
+                      <i
+                        style="color:#D32F2F"
+                        class="fa fa-shopping-bag fa-3x top-15 bottom-20"
+                      ></i>
+                      <h1 class="color-theme bolder bottom-0">Marketplace</h1>
+                      <p class="color-highlight under-heading bottom-50 font-11">
+                      </p>
+                    </div>
+                    <div class="caption-bottom center-text">
+                      <p class="bottom-10 font-10 color-theme opacity-30">
+                        Tap to View
+                      </p>
+                    </div>
+                    <div class="caption-overlay bg-theme"></div>
+                  </a>
+                </div>
+          </div>
+          <div class="clear"></div>
+          <div class="content">
+              <div class="one-half">
+                  <a
+                    id="expedition_BTN"
+                    href="#"
+                    data-height="220"
+                    class="caption round-medium shadow-huge bottom-10"
+                  >
+                    <div class="caption-center center-text">
+                      <i
+                        style="color:#D32F2F"
+                        class="fa fa-gift fa-3x top-15 bottom-20"
+                      ></i>
+                      <h1 class="color-theme bolder bottom-0">Expedition</h1>
+                    </div>
+                    <div class="caption-bottom center-text">
+                      <p class="bottom-10 font-10 color-theme opacity-30">
+                        Tap to View
+                      </p>
+                    </div>
+                    <div class="caption-overlay bg-theme"></div>
+                  </a>
+                </div>
+          </div>
+          <div class="clear"></div>
+      </div>
+
+    
+    </div>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/plugins.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+      function post_to_server(url_param, post_data){
+        var base_url = "https://ict2101gialey.herokuapp.com/" + url_param
+        console.log("URL to send:" + base_url)
+        console.log("Data to send: " + post_data)
+        return new Promise(resolve=>{
+            $.ajax({
+            type : 'POST',
+            url : base_url,
+            data: post_data
+        })
+        .done(function(data) {
+            console.log(data);
+            resolve(data)
+            });
+        })
+      }
+
+      var expedition_BTN = document.getElementById("expedition_BTN")
+      expedition_BTN.addEventListener("click", expedition_clicked)
+
+
+      // This is to save the number of calls from the API
+      var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+      
+
+      function equipment_redirect(){
+        window.location.href = "/equipment.html"
+      }
+      function marketplace_redirect(){
+        window.location.href = "/marketplace.html"
+      }
+
+      function rewards_redirect(){
+        console.log("Redirect to rewards page")
+        window.location.href = "/rewards.html" 
+      }
+
+      async function expedition_clicked(){
+        response = await post_to_server("getHeroAvailability/", {"userID" : userID})
+        if (response["ERROR_CODE"] == 0){
+          if (response["AVAILABILITY"] == "Y")
+            window.location.href = "/expedition.html"
+          else if (response["AVAILABILITY"] == "N") 
+            window.location.href = "/ongoing_expedition.html"
+          else if (response["AVAILABILITY"] == "P") 
+            window.location.href = "/completed_expedition.html"
+        }
+      }
+
+      function logout(){
+        Swal.fire({
+            title: "Logout",
+            text: "Are you sure you want to log out?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Logout'
+            }).then((result) => {
+            if (result.value) {
+              localStorage.clear();
+                  Swal.fire(
+                  'Logged Out',
+                  'We hope to see you soon!',
+                  'success'
+                ) 
+              setTimeout(() => {
+                window.location.href = "/index.html"
+              }, 2000);
+            }
+          })
+      
+      }  
+    </script>
+  </body>
+</html>
