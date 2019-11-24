@@ -5,7 +5,7 @@ import mysql_helper
 
 
 """
-Author:     Pravinraj
+Author:     Kai Xiang
 Purpose:    Retrieves a reward_object
 Parameters: reward_id : int
 Returns:    If method work as expected:  Reward Object 
@@ -22,6 +22,13 @@ def get_reward_by_id(reward_id):
     reward = rewardsClass(record[0], record[1], record[2], record[3], record[4], record[5], record[6])
     return reward
 
+"""
+Author:     Kai Xiang
+Purpose:    Retrieves reward_list
+Parameters: none
+Returns:    If method work as expected:  reward_list 
+            If method fails to function: [1]
+"""
 def get_all_rewards():
     sql_statement = "SELECT * FROM myrewards;"
 
@@ -36,14 +43,12 @@ def get_all_rewards():
 
 
 """
-Author:     Pravinraj
+Author:     Kai Xiang
 Purpose:    User redeems a reward from the marketplace
 Parameters: user_id : int, reward_id : int
 Returns:    If method work as expected: True  
             If method fails to function:False
 """
-
-
 def redeem_reward(user_obj, reward_obj):
     # CHECK IF THERE IS SUFFICIENT H-TOKEN
     if int(user_obj.HTokens) < int(reward_obj.RewardHToken):
@@ -77,7 +82,7 @@ def redeem_reward(user_obj, reward_obj):
 
 
 """
-Author:     Pravinraj
+Author:     Kai Xiang
 Purpose:    To get the expiry date of the reward
 Parameters: days_taken: int
 returns:    expiry date : string (e.g 2019-12-01 15:05:29.565763)
@@ -86,7 +91,13 @@ def get_expiry_date(days_taken):
     end_timestamp = datetime.datetime.now() + datetime.timedelta(days=days_taken)
     return str(end_timestamp)
 
-
+"""
+Author:     Kai Xiang
+Purpose:    Get expiry time for reward
+Parameters: userID : str, voucherID : str
+Returns:    If method work as expected:  Reward Object 
+            If method fails to function: False
+"""
 def get_endtime(userID, voucherID):
     sql_statement = "SELECT endTime FROM myrewardinventory WHERE userId = " + userID + " AND voucherId = " + voucherID + ";"
     print(sql_statement)
@@ -101,6 +112,13 @@ def get_endtime(userID, voucherID):
     else:
         return time
 
+"""
+Author:     Kai Xiang
+Purpose:    Retrieves reward_list owned by user
+Parameters: userID : str
+Returns:    If method work as expected:  reward_list
+            If method fails to function: [1]
+"""
 def get_reward_user(userID):
     sql_statement = "SELECT * FROM myrewardinventory ri INNER JOIN myrewards r ON ri.rewardId = r.rewardId where " \
                     "ri.userID = '" + userID + "';"
@@ -126,16 +144,28 @@ def get_reward_user(userID):
                               "REWARD_CATEGORY" : record[12]})
     return [0, response_list]
 
+"""
+Author:     Kai Xiang
+Purpose:    Set end time of reward object
+Parameters: userID : str, voucherID : str
+Returns:    If method work as expected:  True
+            If method fails to function: False
+"""
 def update_endtime(userID, voucherID):
     sql_statement = "UPDATE myrewardinventory SET endTime = ADDTIME(current_timestamp, \"00:05:00\") WHERE userID = %s AND voucherID = %s;"
-    print(userID, voucherID)
-    print(sql_statement)
     if not mysql_helper.sql_operation(sql_statement, [str(userID), str(voucherID)]):
         return 1
     else:
         return 0
 
-#deletes rewards which has an expired endtime
+
+"""
+Author:     Kai Xiang
+Purpose:    Deletes reward which has an expired entime
+Parameters: reward_id : int
+Returns:    If method work as expected:  Reward Object 
+            If method fails to function: False
+"""
 def update_rewards(userID):
     sql_statement = "DELETE FROM myrewardinventory WHERE userId=%s and endTime < current_timestamp;"
     if not mysql_helper.sql_operation(sql_statement, [str(userID)]):
@@ -143,7 +173,3 @@ def update_rewards(userID):
     else:
         return 0
 
-# if __name__ == '__main__':
-#     print(obtain_reward(1, 1))
-#     # print(get_expiry_date(30))
-#     pass
