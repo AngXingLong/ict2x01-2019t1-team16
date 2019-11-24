@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from www.enableds.com/products/stickymobile/light/page-vcard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Oct 2019 11:36:38 GMT -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>Market Place</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i"
+    rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <link rel="stylesheet" type="text/css" href="styles/framework.css" />
+  <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css" />
+  <style>
+      .loader {
+border: 8px solid #f3f3f3; /* Light grey */
+position: fixed;
+left:50%;
+top: 50%;
+border-top: 8px solid #3498db; /* Blue */
+border-radius: 50%;
+width: 80px;
+height: 80px;
+margin-top: -40px; /* Negative half of height. */
+margin-left: -40px; /* Negative half of width. */
+animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+.item_style{
+      margin: 10px 0px 0px 0px;
+      padding-top:10px;
+    }
+ </style>
+
+</head>
+
+<body class="theme-light" data-background="none" data-highlight="red2">
+    <div class="loader" id="spinner" style="display:none"></div>
+  <div id="page">
+    <div id="page-preloader">
+      <div class="loader-main">
+        <div class="preload-spinner border-highlight"></div>
+      </div>
+    </div>
+    <div class="header header-fixed header-logo-center">
+      <a href="index.html" class="header-title">MarketPlace</a>
+      <a onclick="redirect_back()" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+      ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
+    </div>
+    <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+        <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="/navigation.html"
+          }
+          function expedition(){
+            window.location.href="/expedition.html"
+          }
+          function equipment(){
+            window.location.href="/equipment.html"
+          }
+          function marketplace(){
+            window.location.href="/marketplace.html"
+          }
+          function rewards(){
+            window.location.href="/rewards.html"
+          }
+        </script>
+      </div>
+    <div class="page-content header-clear-medium" id="expedition_container">
+      <div class="search-box search-color bg-dark1-dark shadow-tiny round-huge bottom-0"
+        style="width: 92%; margin-left: auto; margin-right: auto;">
+        <i class="fa fa-search"></i>
+        <input id="search_TB" type="text" placeholder="Search here.." data-search="">
+      </div>
+      <a
+        href="#"
+        onclick="search_reward()"
+        id="send_otp_btn"
+        class="button button-full button-m shadow-large button-round-small bg-highlight bottom-0" style="margin:auto; width:92%; margin-top:10px;">Search Result</a>
+
+      <div class="content top-20 bottom-20">
+        <div class="input-style input-style-2 input-required bg-white">
+          <span  class="input-style-1-active input-style-1-inactive">Select a Category</span>
+          <em><i class="fa fa-check color-green1-dark"></i></em>
+          <select id = "category_SEL" onchange="filter()">
+            <option value="default" selected="">All Categories</option>
+            <option value="Food and Beverages">Food & Beverage</option>
+            <option value="Transportation">Transport</option>
+            <option value="Shopping">Shopping</option>
+
+          </select>
+        </div>
+<div id = "content-holder">
+
+</div>
+
+
+
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/plugins.js"></script>
+        <script type="text/javascript" src="scripts/custom.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+      </div>
+
+      <script>
+         var spinner = document.getElementById("spinner")
+          var rewards_obj_list
+          var filtered_obj_list
+
+      // This is to save the number of calls from the API
+      var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+          
+          get_all_rewards();
+
+        function select_rewards(){
+          console.log(rewards_obj_list)
+          
+          for (var i = 0; i < rewards_obj_list.length; i ++){
+            // console.log(rewards_obj_list[i]["REWARD_ID"], parseInt(event.target.id))
+            if (rewards_obj_list[i]["REWARD_ID"] == parseInt(event.target.id)){
+              console.log("Found!")
+              localStorage.reward_obj = JSON.stringify(rewards_obj_list[i])
+            }
+          }
+          console.log(event.target.id)
+          console.log(localStorage.reward_obj)
+          window.location.href = "/reward_details.html"
+        }
+
+      
+      function post_to_server(url_param, post_data){
+        spinner.style.display = "block"
+        var base_url = "https://ict2101gialey.herokuapp.com/" + url_param
+        console.log("URL to send:" + base_url)
+        console.log("Data to send: " + post_data)
+        return new Promise(resolve=>{
+            $.ajax({
+            type : 'POST',
+            url : base_url,
+            data: post_data
+        })
+        .done(function(data) {
+            spinner.style.display = "none"
+            console.log(data);
+            resolve(data)
+            });
+        })
+    }
+
+
+        
+
+
+          async function get_all_rewards(){
+            let response = await post_to_server('get_rewards/')
+            if (response["ERROR_CODE"] == 0)
+              filtered_obj_list = response["DETAILS"]
+              rewards_obj_list = response["DETAILS"]
+              create_reward_item(filtered_obj_list)
+          }
+
+
+          function create_reward_item(rewards_list){
+            var content_holder = document.getElementById("content-holder")
+            while (content_holder.firstChild) {
+              content_holder.removeChild(content_holder.firstChild);
+            }
+
+          for (var i = 0; i < rewards_list.length; i++)
+          {
+            var box = document.createElement("div")
+            box.style.position = "relative"
+            box.style.height = "100px"
+            box.classList.add("content-boxed", "item_style")
+      
+            var columns = document.createElement("div")
+            columns.classList.add("content", "list-columns-left")
+      
+            var element = document.createElement("div")
+      
+            var imageHolder = document.createElement("img")
+            imageHolder.src = rewards_list[i]["REWARD_IMAGE"]
+      
+            var paragraph = document.createElement("p")
+            paragraph.innerHTML = rewards_list[i]["REWARD_DESCRIPTION"]
+      
+            var header = document.createElement("h1")
+            header.classList.add("bolder")
+            header.innerHTML = rewards_list[i]["REWARD_NAME"]
+            
+            var overlay = document.createElement("div")
+            overlay.style.height = "100%"
+            overlay.style.width = "100%"
+            overlay.style.position = "absolute"
+            overlay.style.top = "0px"
+            overlay.style.left = "0px"
+            overlay.style.zIndex = "999"
+            overlay.id = rewards_list[i]["REWARD_ID"]
+            overlay.addEventListener("click", select_rewards)
+
+            element.appendChild(imageHolder)
+            element.appendChild(header)
+            element.appendChild(paragraph)
+            columns.appendChild(element)
+            
+            box.appendChild(columns)
+            box.appendChild(overlay)
+            content_holder.appendChild(box)
+          }
+          }
+
+          function redirect_back(){
+            localStorage.reward_obj = "";
+            window.location.href = "/home.html"
+        }
+
+
+        function filter(){
+          console.log("On Change Category.")
+          filtered_obj_list = []
+
+          var category_SEL = document.getElementById("category_SEL");
+          var category = category_SEL.options[category_SEL.selectedIndex].value;
+          create_reward_item(filtered_obj_list);
+
+
+          if (category == "default"){
+            filtered_obj_list = rewards_obj_list
+          }
+          else{
+            for (var i = 0; i < rewards_obj_list.length; i++){
+              if (rewards_obj_list[i]["REWARD_CATEGORY"] == category)
+                filtered_obj_list.push(rewards_obj_list[i])
+            }
+          }
+
+          create_reward_item(filtered_obj_list)
+        }
+        
+
+        function search_reward(){
+         
+          var search_value = document.getElementById("search_TB").value
+          var category_SEL = document.getElementById("category_SEL");
+          console.log(search_value)
+          category_SEL.value = "default";
+          filtered_obj_list = []
+          search_value = search_value.toLowerCase();
+          for (var i = 0; i < rewards_obj_list.length; i++){
+              var reward_name = rewards_obj_list[i]["REWARD_NAME"].toLowerCase();
+              let validity = reward_name.includes(search_value)
+              console.log(validity)
+              if(validity)
+              {
+                console.log("append!")
+                filtered_obj_list.push(rewards_obj_list[i])
+              }
+              // if (rewards_obj_list[i]["REWARD_NAME"].includes(search_value) == true)
+              // filtered_obj_list.push(rewards_obj_list[i])
+          } 
+
+          create_reward_item(filtered_obj_list)
+        }
+        </script>
+</body>
+
+</html>
