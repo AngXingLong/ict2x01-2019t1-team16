@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/framework.css">
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+  </head>
+  <body>
+      <div class="header header-static header-logo-center">
+          <a class="header-title">Navigation</a>
+          <a href="home.html" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+      </div>
+        
+    <div id='route_selector'>
+      <div class="container-fluid" style='margin: 10px 0px;'>
+            <div class="form-group">
+              <input class="form-control" id="route_origin" placeholder="Enter Origin">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="route_destination"  placeholder="Enter Destination">
+            </div>
+            
+            <button type="button" class="btn btn-primary btn-block" onclick="routemanager.validateAddress();">Get Route</button>
+      </div>
+      <ul id ='route_list' class="list-group"></ul>
+    </div>
+
+    <div id="map_wrapper">
+      <div id='map_top_wrapper'>
+          <div id='map_top'>
+            <span id='direction_step'></span>
+            <span id='direction_distance'></span>
+            <div><b id='step_progress'>Steps Left: 0/0 steps</b></div>
+            <div id='progress_bar' class="progress">
+                <div id='progress_bar_bar' class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%">0%</div>
+            </div>
+          </div>
+          <div id='buttons_panel'>
+          <button id='navigation_panel_instruction_toggle' type="button" class="btn btn-primary btn-sm rounded-circle map_buttons" onclick="toggleSidePanel()"><i class="fas fa-directions"></i></button>
+          <button type="button" class="btn btn-primary btn-sm rounded-circle map_buttons" onclick="routemanager.centerCurrentLocation()"><i class="fas fa-street-view"></i></button>
+          <button id='stop_game' type="button" class="btn btn-danger btn-sm rounded-circle map_buttons" onclick="routemanager.endGame()"><i class="fas fa-stop"></i></button>
+          </div>
+        </div>
+      <div id='sidepanel' class="sidepanel">
+          <a href="javascript:void(0)" class="closebtn" onclick="toggleSidePanel()">&times;</a>
+          <div id='instruction_panel'></div>
+      </div>
+
+      <div id='map_bottom'>
+          <button type="button" class="btn btn-primary btn-block" style="margin-bottom:100px;" onclick="routemanager.startGame();">Start Game</button>
+          <button type="button" class="btn btn-primary btn-block" onclick="routemanager.returnToRoute();">Back </button>
+      </div>
+
+      <div id="map"></div>
+    </div>
+    <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+        <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="/navigation.html"
+          }
+          function expedition(){
+            window.location.href="/expedition.html"
+          }
+          function equipment(){
+            window.location.href="/equipment.html"
+          }
+          function marketplace(){
+            window.location.href="/marketplace.html"
+          }
+          function rewards(){
+            window.location.href="/rewards.html"
+          }
+        </script>
+      </div>
+
+
+    <div class="modal fade" id="modal_rating" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Rate Your Journey</h5>
+              </div>
+            <div id='modal_id' class="modal-body">
+                <div class="rating">
+                    <span><input type="radio" name="rating" id="str5" value="5"><label for="str5" class="fa fa-star"></label></span>
+                    <span><input type="radio" name="rating" id="str4" value="4"><label for="str4" class="fa fa-star"></label></span>
+                    <span><input type="radio" name="rating" id="str3" value="3"><label for="str3" class="fa fa-star"></label></span>
+                    <span><input type="radio" name="rating" id="str2" value="2"><label for="str2" class="fa fa-star"></label></span>
+                    <span><input type="radio" name="rating" id="str1" value="1"><label for="str1" class="fa fa-star"></label></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button><br>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_stats" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Jounery Stats</h5>
+              </div>
+            <div id="modal_stats_body" class="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal_rating" data-dismiss="modal">Rate Route</button><br>
+              <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  </body>
+</html>
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script src="scripts/jquery-ui.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/sweetalert2@9.js"></script>
+<script src="scripts/moment.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQksFqiesoX_0LVUmW-zG0Qr0GOd8XWQ8&libraries=places"></script>
+<script src="scripts/googlemaps.js"></script>
+
+<script>
+    var username = localStorage.username;
+    var age = localStorage.age;
+    var email = localStorage.email;
+    var mobile_number = localStorage.mobile_number;
+    var userID = localStorage.userID;
+  var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: {lat: 1.3521, lng: 103.8198},
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false,
+        gestureHandling: 'greedy'
+  });
+
+  var myloc = new google.maps.Marker({
+    clickable: false,
+    icon: {
+        anchor: new google.maps.Point(0,2.6),
+        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+        scale: 5,
+        fillColor: "#1E6AE1",
+        fillOpacity: 0.75,
+        strokeColor: 'white',
+        strokeWeight: 1.2
+      },
+    shadow: null,
+    zIndex: 998,
+    map: map
+  });
+  /*
+  var myloc2 = new google.maps.Marker({
+    clickable: false,
+    icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: "#1E6AE1",
+        fillOpacity: 1,
+        strokeColor: 'white',
+        strokeWeight: 3
+    },
+    shadow: null,
+    zIndex: 999,
+    map: map
+  });
+*/
+  var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+  var nextStepMarker = new google.maps.Marker({
+    icon: image,
+    /*
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: "#8B0000",
+      fillOpacity: 0.5,
+      strokeColor: "#FFFFFF",
+      strokeWeight: 1,
+      scale: 8
+    },
+    */
+    map: map
+  });
+
+  var geocoder = new google.maps.Geocoder();
+  var routemanager = new RouteManager();
+  var directionsService = new google.maps.DirectionsService();
+  var directionsRenderer = new google.maps.DirectionsRenderer();
+
+  directionsRenderer.setOptions({
+      map: map,
+      hideRouteList: true
+  });
+
+  directionsRenderer.setPanel(document.getElementById('instruction_panel'));
+
+  var searchBoxOrigin = new google.maps.places.Autocomplete(document.getElementById("route_origin"));
+  var searchBoxDestination = new google.maps.places.Autocomplete(document.getElementById("route_destination"));
+
+  setTimeout(function(){
+      $(".pac-container").append('<div id="are" class="pac-item" onmousedown="routemanager.setOriginAsCurrentLocation();"><span class="pac-icon icon-airport"></span><span class="pac-item-query"><span class="pac-matched"></span>Current Location</span> <span></span></div>');
+  }, 500);
+
+
+  searchBoxOrigin.setComponentRestrictions({'country': ['SG']});
+  searchBoxDestination.setComponentRestrictions({'country': ['SG']});
+
+  function animateMapZoomTo(map, targetZoom) {
+    var currentZoom = arguments[2] || map.getZoom();
+    var oThis = this;
+    if (currentZoom != targetZoom) {
+        google.maps.event.addListenerOnce(map, 'zoom_changed', function (event) {
+            animateMapZoomTo(map, targetZoom, currentZoom + (targetZoom > currentZoom ? 1 : -1));
+        });
+        setTimeout(function(){ map.setZoom(currentZoom) }, 80);
+    }
+  }
+
+
+  function toggleSidePanel() {
+    $( "#sidepanel").toggleClass( "sidepanel_active" );
+  }
+
+  $(document).ready(function(){
+    // Check Radio-box
+    $(".rating input:radio").attr("checked", false);
+
+    $('.rating input').click(function () {
+        $(".rating span").removeClass('checked');
+        $(this).parent().addClass('checked');
+    });
+
+    $('input:radio').change(
+      async function(){
+        var userRating = this.value;
+        //alert(userRating);
+
+        var data = {};
+        data.starting_address = routemanager.startNode.googlePlaceid;
+        data.ending_address = routemanager.endNode.googlePlaceid;
+        data.rating = this.value;
+        
+        var response2 = await post_to_server("addRating/", data);
+        $('#modal_rating').modal('toggle');
+        
+        if (response2["ERROR_CODE"] == 0){
+          
+          Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Thank you for your feedback!'
+          });
+
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Unable to record your rating'
+          });
+        }
+
+    }); 
+  });
+
+  function post_to_server(url_param, post_data){
+      var base_url = "https://ict2101gialey.herokuapp.com/" + url_param;
+      console.log("URL to send:" + base_url);
+      console.log("Data to send: " + JSON.stringify(post_data));
+      return new Promise(resolve=>{
+          $.ajax({
+          type : 'POST',
+          url : base_url,
+          data: post_data
+      })
+      .done(function(data) {
+          console.log(data);
+          resolve(data) 
+          });
+      })
+  }
+
+  
+  if (localStorage.getItem("startAddress") != null) {
+    document.getElementById("route_origin").value = localStorage.startAddress;
+    document.getElementById("route_destination").value = localStorage.endAddress;
+
+    localStorage.removeItem("startAddress");
+    localStorage.removeItem("endAddress");  
+  }
+</script>

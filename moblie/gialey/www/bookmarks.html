@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/framework.css">
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <style>
+      ol, ul{
+        margin-left:0;
+      }
+
+      .loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  position: fixed;
+  left:50%;
+  top: 50%;
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: -40px; /* Negative half of height. */
+margin-left: -40px; /* Negative half of width. */
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+  </head>
+  <body>
+      <div class="loader" id="spinner" style="display:none"></div>
+      <div class="header header-static header-logo-center">
+          <a class="header-title">Bookmarks</a>
+          <a href="#" onclick="home()" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+          <script>
+            function home(){
+              window.location.href = "/home.html"
+            }
+          </script>
+          <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+          ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
+      </div>
+    <ul id='bookmark_list' class="list-group list-group-flush"></ul>
+
+    <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+        <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="/navigation.html"
+          }
+          function expedition(){
+            window.location.href="/expedition.html"
+          }
+          function equipment(){
+            window.location.href="/equipment.html"
+          }
+          function marketplace(){
+            window.location.href="/marketplace.html"
+          }
+          function rewards(){
+            window.location.href="/rewards.html"
+          }
+        </script>
+      </div>
+  </body>
+</html>
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script src="scripts/jquery-ui.js"></script>
+<script src="scripts/popper.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/sweetalert2@9.js"></script>
+<script src="scripts/moment.min.js"></script>
+<script>
+
+  var spinner = document.getElementById("spinner")
+  // This is to save the number of calls from the API
+  var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+      
+var response;
+generateBookMarks();
+
+function post_to_server(url_param, post_data){
+    spinner.style.display = "block"
+    var base_url = "https://ict2101gialey.herokuapp.com/" + url_param;
+    console.log("URL to send:" + base_url);
+    console.log("Data to send: " + JSON.stringify(post_data));
+    return new Promise(resolve=>{
+        $.ajax({
+        type : 'POST',
+        url : base_url,
+        data: post_data
+    })
+    .done(function(data) {
+      spinner.style.display = "none"
+        console.log(data);
+        resolve(data) 
+        });
+    })
+}
+
+async function generateBookMarks(){
+  let data = {};
+  data.userID = localStorage.userID;
+  response = await post_to_server("get_bookmarks/", data);
+
+  let html = "";
+
+  if(response['ERROR_CODE'] == 0){
+
+    for (let i = 0; i < response['DETAILS'].length; i++) {
+      let r = response['DETAILS'][i];
+      html +=  '<li class="list-group-item d-flex justify-content-between align-items-center" >';
+      html += '<div onclick="setBookMark('+i+')"><h5>'+ r['BOOKMARK_NAME'] +'</h5>';
+      html += 'Start: '+ r['STARTING_ADDR'] +' <br>';
+      html += 'End: '+ r['ENDING_ADDR'] +'<br></div>';
+      html += '<button onclick="deleteBookMark('+i+')"type="button" class="btn btn-danger">';
+      html += '<span class="badge"><i class="fas fa-trash-alt"></i></span>';
+      html += '</button>';
+      html += '</li>';
+    }
+    document.getElementById("bookmark_list").innerHTML = html;
+  }
+
+}
+async function deleteBookMark(index){
+  let data = {};
+  data.userID = localStorage.userID;
+  data.bookmark_name = response['DETAILS'][index]['BOOKMARK_NAME'];
+  response = await post_to_server("deleteBookmark/", data);
+
+  if(response['ERROR_CODE'] == 0){
+    Swal.fire({
+      icon: 'success',
+      title: 'Bookmark Deleted',
+      text: 'Bookmark has been successfully deleted'
+    });
+    generateBookMarks();
+  }
+  else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Unable to delete bookmark'
+    });
+  }
+
+  generateBookMarks();
+
+}
+function setBookMark(index){
+  localStorage.startAddress = response['DETAILS'][index]['STARTING_ADDR'];
+  localStorage.endAddress = response['DETAILS'][index]['ENDING_ADDR'];
+  window.location.href = 'navigation.html';
+}
+
+
+
+
+</script>
