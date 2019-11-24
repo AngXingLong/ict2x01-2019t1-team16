@@ -85,19 +85,19 @@ margin-left: -40px; /* Negative half of width. */
         <div class="clear"></div>
         <script>
           function navigation(){
-            window.location.href="/navigation.html"
+            window.location.href="navigation.html"
           }
           function expedition(){
-            window.location.href="/expedition.html"
+            window.location.href="expedition.html"
           }
           function equipment(){
-            window.location.href="/equipment.html"
+            window.location.href="equipment.html"
           }
           function marketplace(){
-            window.location.href="/marketplace.html"
+            window.location.href="marketplace.html"
           }
           function rewards(){
-            window.location.href="/rewards.html"
+            window.location.href="rewards.html"
           }
         </script>
       </div>
@@ -127,7 +127,7 @@ margin-left: -40px; /* Negative half of width. */
       </div>
     </div>
     <div class="page-content header-clear">
-      <div class="hero-section">
+      <div id="IMG_PLACEHOLDER" class="hero-section">
         <div class="hero-section-text"></div>
       </div>
       <div class="content-boxed">
@@ -219,15 +219,15 @@ margin-left: -40px; /* Negative half of width. */
       document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
 
       console.log(userID, username, age, email, mobile_number, h_token)
-        var reward_obj = JSON.parse(localStorage.reward_obj)
-        
+      var reward_obj = JSON.parse(localStorage.reward_obj)
+          
         console.log(reward_obj);
 
         document.getElementById("H_Token_LBL").innerHTML = reward_obj["REWARD_H_TOKEN"] + " H Tokens"
         document.getElementById("voucher_LBL").innerHTML = reward_obj["REWARD_NAME"]
         document.getElementById("duration_LBL").innerHTML = reward_obj["REWARD_DURATION"] + " days."
         document.getElementById("description_LBL").innerHTML = reward_obj["REWARD_DESCRIPTION"]
-        
+        document.getElementById("IMG_PLACEHOLDER").style.backgroundImage = "url("+ reward_obj["REWARD_IMAGE"]  + ")"
         function redeem_reward(){
 
           Swal.fire({

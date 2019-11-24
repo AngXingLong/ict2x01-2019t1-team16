@@ -45,23 +45,23 @@
           <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
           <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
           <div class="clear"></div>
-          <script>
-            function navigation(){
-              window.location.href="navigation.html"
-            }
-            function expedition(){
-              window.location.href="expedition.html"
-            }
-            function equipment(){
-              window.location.href="equipment.html"
-            }
-            function marketplace(){
-              window.location.href="marketplace.html"
-            }
-            function rewards(){
-              window.location.href="rewards.html"
-            }
-          </script>
+       <script>
+              function navigation(){
+                window.location.href="navigation.html"
+              }
+              function expedition(){
+                window.location.href="expedition.html"
+              }
+              function equipment(){
+                window.location.href="equipment.html"
+              }
+              function marketplace(){
+                window.location.href="marketplace.html"
+              }
+              function rewards(){
+                window.location.href="rewards.html"
+              }
+            </script>
         </div>
 
       <div class="page-content header-clear-medium">
@@ -69,7 +69,7 @@
         <div class="content">
             <div class="one-half">
                 <a
-                  href="navigation.html"
+                  href="/navigation.html"
                   data-height="220"
                   class="caption round-medium shadow-huge bottom-10"
                 >
@@ -93,7 +93,7 @@
               </div>
               <div class="one-half last-column">
                 <a
-                  href="bookmarks.html"
+                  href="/bookmarks.html"
                   data-height="220"
                   class="caption round-medium shadow-huge bottom-10"
                 >
@@ -287,26 +287,26 @@
       
 
       function equipment_redirect(){
-        window.location.href = "equipment.html"
+        window.location.href = "/equipment.html"
       }
       function marketplace_redirect(){
-        window.location.href = "marketplace.html"
+        window.location.href = "/marketplace.html"
       }
 
       function rewards_redirect(){
         console.log("Redirect to rewards page")
-        window.location.href = "rewards.html" 
+        window.location.href = "/rewards.html" 
       }
 
       async function expedition_clicked(){
         response = await post_to_server("getHeroAvailability/", {"userID" : userID})
         if (response["ERROR_CODE"] == 0){
           if (response["AVAILABILITY"] == "Y")
-            window.location.href = "expedition.html"
+            window.location.href = "/expedition.html"
           else if (response["AVAILABILITY"] == "N") 
-            window.location.href = "ongoing_expedition.html"
+            window.location.href = "/ongoing_expedition.html"
           else if (response["AVAILABILITY"] == "P") 
-            window.location.href = "completed_expedition.html"
+            window.location.href = "/completed_expedition.html"
         }
       }
 

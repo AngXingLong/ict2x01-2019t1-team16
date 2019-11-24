@@ -36,7 +36,7 @@
       ></a>
       <script>
         function home(){
-          window.location.href = "login.html"
+          window.location.href = "/login.html"
         }
       </script>
       </div>
@@ -365,7 +365,7 @@
     
     <script>
     if(localStorage.userID != undefined){
-        window.location.href = "home.html"
+        window.location.href = "/home.html"
     } 
     
     function post_to_server(url_param, post_data){
@@ -419,7 +419,7 @@
                     localStorage.userID = response["USER_ID"]
                     localStorage.mobile_number = mobile_number
                     localStorage.h_token = 0
-                    window.location.href = "http://192.168.56.1:3000/home.html"
+                    window.location.href = "home.html"
                 }
             }
             // post_data("checkOTP", {"mobile_number":"92233511"})

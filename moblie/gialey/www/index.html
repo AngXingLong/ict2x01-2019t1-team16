@@ -30,6 +30,7 @@
       </div>
       <div class="header header-fixed header-logo-center">
         <a href="index.html" class="header-title">Login</a>
+
       </div>
       
       <div class="page-content-black"></div>
@@ -90,7 +91,7 @@
             >
             <script>
               function register(){
-                window.location.href = "register.html"
+                window.location.href = "/register.html"
               }
             </script>
                 <a
@@ -120,7 +121,7 @@
     console.log(localStorage.userID)
     if(localStorage.userID !== undefined){
       console.log("not undefined")
-      window.location.href = "home.html"
+      window.location.href = "/home.html"
     }
 
 
@@ -169,7 +170,7 @@
                 localStorage.email = response["EMAIL"]
                 localStorage.h_token = response["H_TOKENS"]
 
-                window.location.href = "http://192.168.56.1:3000/home.html"
+                window.location.href = "home.html"
             }
             else if (response["ERROR_CODE"] == 11){
               Swal.fire(
