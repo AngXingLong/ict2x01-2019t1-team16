@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from www.enableds.com/products/stickymobile/light/page-vcard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Oct 2019 11:36:38 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <title>GiaLey</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/framework.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/css/fontawesome-all.min.css"
+    />
+    <style>
+        .loader {
+ border: 8px solid #f3f3f3; /* Light grey */
+ position: fixed;
+ left:50%;
+ top: 50%;
+ border-top: 8px solid #3498db; /* Blue */
+ border-radius: 50%;
+ width: 80px;
+ height: 80px;
+ margin-top: -40px; /* Negative half of height. */
+margin-left: -40px; /* Negative half of width. */
+ animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+   </style>
+
+  </head>
+  <body class="theme-light" data-background="none" data-highlight="red2">
+      <div class="loader" id="spinner" style="display:none"></div>
+    <div id="page">
+      <div id="page-preloader">
+        <div class="loader-main">
+          <div class="preload-spinner border-highlight"></div>
+        </div>
+      </div>
+      <div class="header header-fixed header-logo-center">
+        <a href="index.html" class="header-title">My Profile</a>
+        <a href="#" onclick="home()" class="header-icon header-icon-1"
+          ><i class="fas fa-arrow-left"></i
+        ></a>
+        <script>
+          function home(){
+            window.location.href = "/home.html"
+          }
+        </script>
+        <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+        ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
+      </div>
+      <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+          <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+          <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+          <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+          <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+          <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+          <div class="clear"></div>
+          <script>
+            function navigation(){
+              window.location.href="/navigation.html"
+            }
+            function expedition(){
+              window.location.href="/expedition.html"
+            }
+            function equipment(){
+              window.location.href="/equipment.html"
+            }
+            function marketplace(){
+              window.location.href="/marketplace.html"
+            }
+            function rewards(){
+              window.location.href="/rewards.html"
+            }
+          </script>
+        </div>
+      <div
+      id="menu-cookie-modal"
+      class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small"
+      data-menu-height="250"
+      data-menu-width="310"
+      data-menu-effect="menu-over"
+      data-menu-select="page-components"
+    >
+      <div class="top-30 boxed-text-huge">
+        <h2 class="uppercase bold">We're using cookies</h2>
+        <p class="under-heading color-highlight bottom-20">
+          To make your experience awesome!
+        </p>
+        <p class="center-text-huge">
+          Our page uses cookies to make your overall experience better, faster
+          and smoother.
+        </p>
+
+        <a
+          href="#"
+          class="close-menu button button-s button-center-large button-round-medium shadow-large bg-highlight"
+          >Accept</a
+        >
+      </div>
+    </div>
+      <div class="page-content header-clear">
+        <div
+          data-height="135"
+          class="caption shadow-large caption-margins top-30 round-medium shadow-huge"
+        >
+          <div class="caption-top top-30">
+            <h1 class="center-text color-white bolder fa-4x" id="username_lbl">Enabled</h1>
+          </div>
+          <div class="caption-bottom" style="padding: 20px 20px 20px 20px">
+              <div class="one-third"  style="height: 25px">
+                  <ul class="icon-list">
+                    <!-- <li style="color:#fff" ><i class="fa fa-coins color-white"></i>3000</li> -->
+                  </ul>
+              </div>
+              <div class="one-third" style="height: 25px">
+                 <ul class="icon-list">
+                    <!-- <li style="color:#fff" ><i class="fa fa-shoe-prints color-white"></i>200 Steps</li> -->
+                  </ul>
+              </div>
+              <div class="one-third last-column"  style="height: 25px">
+                 <ul class="icon-list">
+                    <!-- <li style="color:#fff" ><i class="fa fa-superpowers color-white"></i>2.6K</li> -->
+                  </ul>
+              </div> 
+          </div>
+          <div class="caption-overlay bg-black opacity-80"></div>
+          <div class="caption-bg bg-14"></div>
+        </div>
+        <div class="content-boxed">
+          <div class="content">
+            <h3 class="bolder">Modern Fields</h3>
+            <p>
+              These boxes will react to them when you type or select a value.
+            </p>
+            <div class="input-style input-style-2 has-icon input-required">
+                <i class="input-icon fa fa-user"></i>
+              <span id="name_lbl">Name</span>
+              <input id="name_tb" disabled type="name" placeholder="" />
+            </div>
+            <div class="input-style input-style-2 has-icon input-required">
+                <i class="input-icon fa fa-user-clock"></i>
+              <span id="age_lbl">Age</span>
+              <input id="age_tb" disabled type="name" placeholder="" />
+            </div>
+            <div class="input-style input-style-2 has-icon input-required">
+                <i class="input-icon fa fa-envelope"></i>
+              <span id="email_lbl">Email</span>
+              <input id="email_tb" type="email" placeholder="" />
+            </div>
+            <div class="input-style input-style-2 has-icon input-required">
+                <i class="input-icon fa fa-phone"></i>
+              <span id="phone_lbl">Phone</span>
+              <input id="mobile_number_tb" type="tel" placeholder="" />
+            </div>
+            <a
+              href="#" id="update_btn"
+              class="button button-3d button-m button-full button-round-small shadow-small border-red2-dark bg-red2-light"
+              >Update Details</a
+            >
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/plugins.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  
+    <script>
+       var spinner = document.getElementById("spinner")
+
+       function post_to_server(url_param, post_data){
+        spinner.style.display = "block"
+        var base_url = "https://ict2101gialey.herokuapp.com/" + url_param
+        console.log("URL to send:" + base_url)
+        console.log("Data to send: " + post_data)
+        return new Promise(resolve=>{
+            $.ajax({
+            type : 'POST',
+            url : base_url,
+            data: post_data
+        })
+        .done(function(data) {
+          spinner.style.display = "none"
+            console.log(data);
+            resolve(data)
+            });
+        })
+    }
+
+      // Fetch items from session variables.
+       // This is to save the number of calls from the API
+       var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+      // Fetch the elements
+      var update_btn = document.getElementById("update_btn")
+      var name_tb = document.getElementById("name_tb")
+      var age_tb = document.getElementById("age_tb")
+      var email_tb = document.getElementById("email_tb")
+      var mobile_number_tb = document.getElementById("mobile_number_tb")
+
+      // Binding event listeners
+      update_btn.addEventListener("click", update_user_details)
+
+      // Set the placeholders
+      document.getElementById("username_lbl").innerHTML = username
+      document.getElementById("age_lbl").innerHTML = age
+      document.getElementById("email_lbl").innerHTML = email
+      document.getElementById("phone_lbl").innerHTML = mobile_number
+
+
+      async function update_user_details(){
+        variable_list = {"emailAddress" : email_tb.value, "contactNumber" : mobile_number_tb.value}
+        variable_list = JSON.stringify(variable_list)
+        console.log("Attempting to update user details");
+        console.log(variable_list);
+        response = await post_to_server("updateUserDetails/", {"details" :variable_list, "userID" : userID})
+        if (response["ERROR_CODE"] == 0){
+          // Show modal.
+          update_success_alert()
+          response = await post_to_server("getUser/", {"userID" : userID})
+          // Update local storage
+          localStorage.mobile_number = response["MOBILE_NUMBER"]
+          localStorage.email = response["EMAIL"]
+          
+          // Update Views
+          document.getElementById("email_lbl").innerHTML = response["EMAIL"]
+          document.getElementById("phone_lbl").innerHTML = response["MOBILE_NUMBER"]
+        }
+      }
+
+      function update_success_alert(){
+        Swal.fire({
+        icon: 'success',
+        title: 'Update Successful',
+        text: 'Your details have been updated successfully!'
+      })
+      }
+    </script>
+</html>
