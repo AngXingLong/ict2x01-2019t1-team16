@@ -3,7 +3,7 @@ import mysql_helper
 
 
 def add_ratings(starting_address, ending_address, rating):
-    sql_statement = "INSERT INTO MYRATINGS (starting_address, ending_address, rating) VALUES(%s, %s, %s)"
+    sql_statement = "INSERT INTO myratings (starting_address, ending_address, rating) VALUES(%s, %s, %s)"
     response = mysql_helper.sql_operation(sql_statement,[starting_address, ending_address, str(rating)])
     if not response:
         return 1
