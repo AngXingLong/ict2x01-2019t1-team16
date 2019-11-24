@@ -287,26 +287,26 @@
       
 
       function equipment_redirect(){
-        window.location.href = "/equipment.html"
+        window.location.href = "equipment.html"
       }
       function marketplace_redirect(){
-        window.location.href = "/marketplace.html"
+        window.location.href = "marketplace.html"
       }
 
       function rewards_redirect(){
         console.log("Redirect to rewards page")
-        window.location.href = "/rewards.html" 
+        window.location.href = "rewards.html" 
       }
 
       async function expedition_clicked(){
         response = await post_to_server("getHeroAvailability/", {"userID" : userID})
         if (response["ERROR_CODE"] == 0){
           if (response["AVAILABILITY"] == "Y")
-            window.location.href = "/expedition.html"
+            window.location.href = "expedition.html"
           else if (response["AVAILABILITY"] == "N") 
-            window.location.href = "/ongoing_expedition.html"
+            window.location.href = "ongoing_expedition.html"
           else if (response["AVAILABILITY"] == "P") 
-            window.location.href = "/completed_expedition.html"
+            window.location.href = "completed_expedition.html"
         }
       }
 
@@ -328,7 +328,7 @@
                   'success'
                 ) 
               setTimeout(() => {
-                window.location.href = "/index.html"
+                window.location.href = "index.html"
               }, 2000);
             }
           })

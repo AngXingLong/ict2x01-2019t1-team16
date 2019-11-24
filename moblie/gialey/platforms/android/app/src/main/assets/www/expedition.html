@@ -9,7 +9,6 @@
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
     />
     <title>StickyMobile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i"
       rel="stylesheet"
@@ -21,26 +20,28 @@
       type="text/css"
       href="fonts/css/fontawesome-all.min.css"
     />
-    <style>
-      .loader {
-          border: 8px solid #f3f3f3; /* Light grey */
-          position: fixed;
-          left:50%;
-          top: 50%;
-          border-top: 8px solid #3498db; /* Blue */
-          border-radius: 50%;
-          width: 80px;
-          height: 80px;
-          margin-top: -40px; /* Negative half of height. */
-        margin-left: -40px; /* Negative half of width. */
-          animation: spin 2s linear infinite;
-        }
 
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-    </style>
+    <style>
+        .loader {
+ border: 8px solid #f3f3f3; /* Light grey */
+ position: fixed;
+ left:50%;
+ top: 50%;
+ border-top: 8px solid #3498db; /* Blue */
+ border-radius: 50%;
+ width: 80px;
+ height: 80px;
+ margin-top: -40px; /* Negative half of height. */
+margin-left: -40px; /* Negative half of width. */
+ animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+   </style>
   </head>
   <body class="theme-light" data-background="none" data-highlight="red2">
       <div class="loader" id="spinner" style="display:none"></div>
@@ -51,11 +52,11 @@
         </div>
       </div>
       <div class="header header-fixed header-logo-center">
-        <a class="header-title">Ongoing Expedition</a>
-        <a onclick="home()" class="header-icon header-icon-1"
+        <a href="#" class="header-title">Expedition</a>
+        <a onclick="home()"class="header-icon header-icon-1"
           ><i class="fas fa-arrow-left"></i
         ></a>
-          <script>
+        <script>
           function home(){
             window.location.href = 'home.html'
           }
@@ -89,36 +90,46 @@
             </script>
         </div>
       <div class="page-content header-clear-medium" id="expedition_container">
-
-            <div data-height="160" class="caption caption-margins round-medium shadow-large">
-            <div class="caption-center">
-              <h1 id="completed_title" class="center-text color-white bolder font-22"></h1>
-              <p class="boxed-text-huge under-heading color-white opacity-90 bottom-15">
-                You have completed this expedition
-              </p>
-              <a id="redeem_BTN" href="#" style="z-index:999" class="button button-xs bg-highlight button-round-medium button-center-medium"
-                >Redeem H-Tokens</a>
-            </div>
-            <div class="caption-overlay bg-black opacity-80"></div>
-            <div class="caption-bg bg-25"></div>
-          </div>
-          </div>
+            <!-- <div
+              style ="height:140px"
+              class="caption caption-margins round-medium shadow-large"
+            >
+              <div class="caption-top top-20 right-20 left-20">
+                <div class="one-half">
+                    <span class="text-left color-red2-dark">
+                        500 Hero Power
+                  </span>
+                </div>   
+                <div class="one-half last-column">
+                <span class="text-right color-yellow1-dark">
+                      200 HTokens
+                  </span>
+                </div>
+               
+              </div>
+              <div class="caption-bottom left-20 bottom-20">
+                <h1 class="color-white bolder">Ancient Forest</h1>
+                <p class="under-heading color-white opacity-80 bottom-0">
+                  A beautiful sunset view at the docks.
+                </p>
+              </div>
+              <div class="caption-overlay bg-black opacity-80"></div>
+              <div class="caption-bg bg-18"></div>
+            </div>            
+          </div> -->
     </div>
     
     <script type="text/javascript" src="scripts/jquery.js"></script>
     <script type="text/javascript" src="scripts/plugins.js"></script>
     <script type="text/javascript" src="scripts/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
     <script>
-        var spinner = document.getElementById("spinner")
-        var redeem_btn = document.getElementById("redeem_BTN")
-        redeem_btn.addEventListener("click", redeem_reward)
+       var spinner = document.getElementById("spinner")
            // Fetch items from session variables.
-      // This is to save the number of calls from the API
-      var username = localStorage.username;
+      expedition_list =  []
+       // This is to save the number of calls from the API
+       var username = localStorage.username;
       var age = localStorage.age;
       var email = localStorage.email;
       var mobile_number = localStorage.mobile_number;
@@ -128,7 +139,6 @@
 
       console.log(userID, username, age, email, mobile_number, h_token)
 
-
       //window.addEventListener('load', function(){
       fetch_expeditions()
       //   // Everything has loaded!
@@ -136,6 +146,7 @@
        
 
        function post_to_server(url_param, post_data){
+        spinner.style.display = "block"
         var base_url = "https://ict2101gialey.herokuapp.com/" + url_param
         console.log("URL to send:" + base_url)
         console.log("Data to send: " + post_data)
@@ -146,62 +157,71 @@
             data: post_data
         })
         .done(function(data) {
+            spinner.style.display = "none"
             console.log(data);
             resolve(data)
             });
         })
     }
 
-    async function redeem_reward(){
-      spinner.style.display = "block"
-        console.log("redeem_reward pressed")
-        redeem_reward_alert(completed_expedition["H_TOKENS"])
-        // Add reward
-        response = await post_to_server("updateHTokens/", {"userID" : userID, 
-                                        "HTokens" : completed_expedition["H_TOKENS"], 
-                                        "Method" : 1})
-
-        if (response["ERROR_CODE"] == 0){
-          localStorage.h_token = parseInt(h_token) + parseInt(completed_expedition["H_TOKENS"])
-          document.getElementById("H_Token_ICON").innerHTML = localStorage.h_token + " "; 
-          response = await post_to_server("complete_expedition/", {"userID" : userID })
-          if (response["ERROR_CODE"] == 0){
-            spinner.style.display = "none"
-            setTimeout(() => {
-              window.location.href="expedition.html"
-            }, 2000);
-           
-          }
-        }
-    }
     
     // Fetch Expeditions
     async function fetch_expeditions(){
-      spinner.style.display = "block"
         console.log("Fetch Expeditions")
-        var response = await post_to_server("get_completed_expeditions/", {"userID" : userID})
+        var response = await post_to_server("getExpeditions/", {"userID" : userID})
         if (response["ERROR_CODE"] == 0){
-          spinner.style.display = "none"
-            document.getElementById("completed_title").innerHTML = response["DETAILS"]["TITLE"]
-            completed_expedition = response["DETAILS"]
-           // Populate the HTML template.
+            for (var i = 0; i < response["EXPEDITION_LIST"].length; i++){
+                expedition_list.push(response["EXPEDITION_LIST"][i])
+                console.log("Attempting to populate")
+                // console.log(response["EXPEDITION_LIST"][i]["TITLE"])
+                if (response["EXPEDITION_LIST"][i]["IS_ELIGIBLE"]){
+                  create_expedition_card(response["EXPEDITION_LIST"][i]["EID"], response["EXPEDITION_LIST"][i]["TITLE"], 
+                response["EXPEDITION_LIST"][i]["DESCRIPTION"], response["EXPEDITION_LIST"][i]["POWER_LEVEL"], response["EXPEDITION_LIST"][i]["HTOKEN"])
+                }
+                else{
+                  create_locked_card(response["EXPEDITION_LIST"][i]["EID"], response["EXPEDITION_LIST"][i]["TITLE"], response["EXPEDITION_LIST"][i]["POWER_LEVEL"])
+                }
+              
+            }
         }
     }
 
-    
+    function locked_expedition(){
+      console.log(expedition_list);
+      console.log(event.target.id);
+      for (var i = 0; i < expedition_list.length; i++){
+        if (expedition_list[i]["EID"] == event.target.id)
+        {
+          console.log(expedition_list[i]["EID"])
+          locked_alert(expedition_list[i]["POWER_LEVEL"]) 
+          return
+        }
+      }
+    }
+
+    function select_expedition(){
+      console.log(expedition_list);
+      console.log(event.target.id);
+      for (var i = 0; i < expedition_list.length; i++){
+        if (expedition_list[i]["EID"] == event.target.id)
+        {
+          console.log(expedition_list[i]["EID"])
+          expedition_confirmation(event.target.id, expedition_list[i]["TITLE"], expedition_list[i]["TIME_TAKEN"]) 
+          
+          return
+        }
+      }
+    }
     
 
     function create_locked_card(expedition_id, expedition_name, expedition_hero_power){
         var expedition_container = document.getElementById("expedition_container");
        
-
         var card_div = document.createElement("div")
         card_div.style.height = "140px"
         // card_div.dataset.height = "175"
         card_div.classList.add("caption", "caption-margins", "round-medium", "shadow-large")
        
-        
-
         // Caption Top
         var caption_top = document.createElement("div")
         caption_top.classList.add("caption-center", "text-center")
@@ -219,15 +239,11 @@
         Description.classList.add("under-heading", "color-white", "opacity-80", "bottom-0", "mt-10")
         Description.innerHTML = "You require at least " + expedition_hero_power + " to unlock this expedition"
         
-       
-
         Lock.appendChild(icon)
         caption_top.appendChild(Lock)
         caption_top.appendChild(Header)
         caption_top.appendChild(Description)
           
-
-
         var opacity_div = document.createElement("div")
         opacity_div.classList.add("caption-overlay", "bg-black", "opacity-80")
         
@@ -256,8 +272,7 @@
 
 
 
-
-    function create_expedition_card(expedition_id, expedition_name, expedition_description, expedition_hero_power, expetition_htokens, progress){
+    function create_expedition_card(expedition_id, expedition_name, expedition_description, expedition_hero_power, expetition_htokens){
         console.log(expedition_name, expedition_description, expedition_id)
         var expedition_container = document.getElementById("expedition_container");
 
@@ -294,33 +309,16 @@
 
         // Caption Bottom
         var caption_bottom = document.createElement("div")
-        caption_bottom.classList.add("caption-bottom", "bottom-20", "left-20", "right-20")
+        caption_bottom.classList.add("caption-bottom", "bottom-20", "left-20")
         var header_1 = document.createElement("h1")
         header_1.classList.add("color-white", "bolder")
         header_1.innerHTML = expedition_name
-
-        var progress_div = document.createElement("div")
-        progress_div.style.height = "10px"
-        progress_div.classList.add("progress")
-
-        var progress_bar = document.createElement("div")
-        progress_bar.id = "progress_bar"
-        progress_bar.classList.add("progress-bar")
-        progress_bar.role = "progressbar"
-        progress_bar.style.width = progress + "%"
-        progress_bar.style.color = "transparent"
-        progress_bar.innerHTML = progress
-
-        progress_div.appendChild(progress_bar)
-
         var description_text = document.createElement("p")
         description_text.classList.add("under-heading", "color-white", "opacity-80", "bottom-0")
         description_text.innerHTML = expedition_description
-        description_text.style.marginTop = "6px"
         caption_bottom.appendChild(header_1)
-        caption_bottom.appendChild(progress_div)
         caption_bottom.appendChild(description_text)
-        
+
         var opacity_div = document.createElement("div")
         opacity_div.classList.add("caption-overlay", "bg-black", "opacity-80")
         
@@ -348,6 +346,7 @@
         expedition_container.appendChild(card_div)
 
     }
+
     function locked_alert(text){
       Swal.fire({
         icon: 'error',
@@ -356,14 +355,32 @@
       }) 
     }
 
-  
+    function expedition_confirmation(id, title, time){
+      Swal.fire({
+      title: title,
+      text: "Your hero will be unavailable for " + time + " minutes.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Start'
+      }).then((result) => {
+      if (result.value) {
+        // Set user to set off for expedition     
+      
+        post_to_server("startExpedition/", {"userID" : userID, "expeditionID" : id})
 
-
-    function redeem_reward_alert(H_Tokens){
         Swal.fire(
-        'Reward Claimed',
-        'You have received ' + H_Tokens + " H-Tokens",
-        'success')
-    }
+          'Expedition Started!',
+          'You will be redirected shortly',
+          'success'
+        )
+        setTimeout(()=>{window.location.href="/ongoing_expedition.html"}, 1500)
+  }
+})
+      }
+    
+    
+  
     </script>
 </html>

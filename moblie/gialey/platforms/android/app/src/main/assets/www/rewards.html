@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css" />
     <style>
       .loader {
+        z-index: 9999;
         border: 8px solid #f3f3f3; /* Light grey */
         position: fixed;
         left:50%;
@@ -133,7 +134,7 @@
                 redeem_rewards();
                 console.log(userID, username, age, email, mobile_number)
 
-                function select_rewards() {
+                async function select_rewards() {
                     // console.log(rewards_list)
                     console.log(event.target.id)
                     for (var i =0; i < rewards_list.length; i++){
@@ -142,13 +143,13 @@
                             localStorage.setItem('reward_obj', JSON.stringify(rewards_list[i]))
                             console.log(JSON.parse(localStorage.getItem('reward_obj')))
                             if (rewards_list[i]["END_TIME"] == null){
-                                update_endtime()
-                                get_endtime()
+                                await update_endtime()
+                                await get_endtime()
                             }
                             break
                         }
                     }
-                    window.location.href = "/redemption.html"
+                    window.location.href = "redemption.html"
 
                 }
 
