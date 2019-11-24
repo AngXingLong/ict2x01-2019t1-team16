@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from www.enableds.com/products/stickymobile/light/page-vcard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Oct 2019 11:36:38 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
+    />
+    <title>StickyMobile</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/framework.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/css/fontawesome-all.min.css"
+    />
+    <!--Styling for image header and for vertical and horizontal line-->
+    <!-- change url image to db retreived image for reward voucher-->
+    <style>
+              .loader {
+ border: 8px solid #f3f3f3; /* Light grey */
+ position: fixed;
+ left:50%;
+ top: 50%;
+ border-top: 8px solid #3498db; /* Blue */
+ border-radius: 50%;
+ width: 80px;
+ height: 80px;
+ margin-top: -40px; /* Negative half of height. */
+margin-left: -40px; /* Negative half of width. */
+ animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+      .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/pictures/2.jpg");
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+          }
+          .vl {
+            border-left: 1px solid grey;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            margin-left: -3px;
+          }
+
+    </style>
+  </head>
+  <body class="theme-light" data-background="none" data-highlight="red2">
+      <div class="loader" id="spinner" style="display:none"></div>
+    <div id="page">
+      <div id="page-preloader">
+        <div class="loader-main">
+          <div class="preload-spinner border-highlight"></div>
+        </div>
+      </div>
+      <div class="header header-fixed header-logo-center">
+        <a href="index.html" class="header-title">Reward Details</a>
+        <a href="#" class="back-button header-icon header-icon-1"
+          ><i class="fas fa-arrow-left"></i
+        ></a>
+        <a style="margin-right:10px; width:50px;"href="#" data-toggle-theme-switch class="header-icon header-icon-4"
+        ><span style="font-weight: 600;" id="H_Token_ICON"></span> <i class="fa fa-coins"></i></a>
+      </div>
+      <div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1">
+        <a onclick="navigation()"><i class="fa fa-map-pin"></i><span>Navigate</span></a>
+        <a onclick="expedition()"><i class="fa fa-map"></i><span>Expedition</span></a>
+        <a onclick="equipment()"><i class="fa fa-khanda"></i><span>My Hero</span></a>
+        <a onclick="marketplace()"><i class="fa fa-shopping-basket"></i><span>Marketplace</span></a>
+        <a onclick="rewards()"><i class="fa fa-ticket-alt"></i><span>Rewards</span></a>
+        <div class="clear"></div>
+        <script>
+          function navigation(){
+            window.location.href="/navigation.html"
+          }
+          function expedition(){
+            window.location.href="/expedition.html"
+          }
+          function equipment(){
+            window.location.href="/equipment.html"
+          }
+          function marketplace(){
+            window.location.href="/marketplace.html"
+          }
+          function rewards(){
+            window.location.href="/rewards.html"
+          }
+        </script>
+      </div>
+      <div
+        id="menu-cookie-modal"
+        class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small"
+        data-menu-height="250"
+        data-menu-width="310"
+        data-menu-effect="menu-over"
+        data-menu-select="page-components"
+      >
+      <div class="top-30 boxed-text-huge">
+        <h2 class="uppercase bold">We're using cookies</h2>
+        <p class="under-heading color-highlight bottom-20">
+          To make your experience awesome!
+        </p>
+        <p class="center-text-huge">
+          Our page uses cookies to make your overall experience better, faster
+          and smoother.
+        </p>
+
+        <a
+          href="#"
+          class="close-menu button button-s button-center-large button-round-medium shadow-large bg-highlight"
+          >Accept</a
+        >
+      </div>
+    </div>
+    <div class="page-content header-clear">
+      <div class="hero-section">
+        <div class="hero-section-text"></div>
+      </div>
+      <div class="content-boxed">
+        <div class="content">
+          <div>
+            <!--Put Reward title variable from db server here-->
+            <h1 class="center-text color-black bolder" style="font-size:24pt" id="voucher_LBL"></h1>
+          </div>
+          <br/>
+          <div class="one-half"  style="height: auto">
+            <h4 class="bolder">Points</h4>
+            <ul class="icon-list">
+              <!--Put Htoken variable from db server here-->
+              <li><i class="fa fa-coins color-black"></i><span id="H_Token_LBL">1200 H-Tokens</span></li>
+            </ul>
+          </div>
+          <!-- insert a | in between the 2 divs -->
+          <div class="vl" ></div>
+          <div class="one-half last-column" style="height: auto">
+            <h4 class="bolder">Valid For</h4>
+            <ul class="icon-list">
+              <!-- Put start date and end date variable from db here -->
+              <li><i class="fa fa-calendar color-black"></i><span id="duration_LBL">26 Dec 2019</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class = "content">
+          <div style="height: auto">
+            <h4 class="bolder">Highlights/Information</h4>
+            <ul class="icon-list" style="margin-top:10px;">
+              <!-- Put details for the rewards variable from db here -->
+              <li><i class="fa fa-info color-black"></i><span id="description_LBL">This is a sample rewards description</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="content-boxed">
+        <div class="content">
+          <h3 class="bolder">Do you wish to redeem this reward?</h3>
+          <p style="margin-bottom:10px; line-height:normal" class="text-center">
+            Rewards redeemed will be placed under "Reward Inventory"
+          </p>
+          <a
+            href="#" id="update_btn"
+            onclick="redeem_reward()"
+            class="button button-3d button-m button-full button-round-small shadow-small border-green2-dark bg-green2-light"
+            >Redeem</a
+          >
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/plugins.js"></script>
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+       var spinner = document.getElementById("spinner")
+
+
+          function post_to_server(url_param, post_data){
+            spinner.style.display = "block"
+            var base_url = "https://ict2101gialey.herokuapp.com/" + url_param
+            console.log("URL to send:" + base_url)
+            console.log("Data to send: " + post_data)
+            return new Promise(resolve=>{
+                $.ajax({
+                type : 'POST',
+                url : base_url,
+                data: post_data
+            })
+            .done(function(data) {
+                spinner.style.display = "none"
+                console.log(data);
+                resolve(data)
+                });
+            })
+          }
+
+
+        // This is to save the number of calls from the API
+      var username = localStorage.username;
+      var age = localStorage.age;
+      var email = localStorage.email;
+      var mobile_number = localStorage.mobile_number;
+      var userID = localStorage.userID;
+      var h_token = localStorage.h_token;
+      document.getElementById("H_Token_ICON").innerHTML = h_token + " ";
+
+      console.log(userID, username, age, email, mobile_number, h_token)
+        var reward_obj = JSON.parse(localStorage.reward_obj)
+        
+        console.log(reward_obj);
+
+        document.getElementById("H_Token_LBL").innerHTML = reward_obj["REWARD_H_TOKEN"] + " H Tokens"
+        document.getElementById("voucher_LBL").innerHTML = reward_obj["REWARD_NAME"]
+        document.getElementById("duration_LBL").innerHTML = reward_obj["REWARD_DURATION"] + " days."
+        document.getElementById("description_LBL").innerHTML = reward_obj["REWARD_DESCRIPTION"]
+        
+        function redeem_reward(){
+
+          Swal.fire({
+            title: "Redeem " + reward_obj["REWARD_NAME"],
+            text: "Redeem " + reward_obj["REWARD_NAME"] + " for " + reward_obj["REWARD_H_TOKEN"] + " H Tokens?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Redeem'
+            }).then(async(result) => {
+            if (result.value) {
+              // Set user to set off for expedition     
+            
+              let response = await post_to_server("redeem_rewards/", {"UserID" : userID, "RewardID" : reward_obj["REWARD_ID"]})
+              if (response["ERROR_CODE"] == 0){
+                Swal.fire(
+                  'Redemption Successful!!',
+                  'You have redeemed ' + reward_obj["REWARD_NAME"],
+                  'success'
+                )
+                var new_h_token_value = h_token - reward_obj["REWARD_H_TOKEN"]
+                console.log(new_h_token_value)
+                localStorage.h_token = new_h_token_value
+                document.getElementById("H_Token_ICON").innerHTML = new_h_token_value + " ";
+
+              }
+                else if (response["ERROR_CODE"] == 10){
+                  Swal.fire(
+                  'Redemption failed',
+                  'Insufficient H-Tokens',
+                  'error'
+                ) 
+              }
+        }
+        })
+        }
+    </script>
+</html>
