@@ -78,5 +78,5 @@ Myphone
 '''
 cordova run android
 '''
-12. For more infor
+12. For more info refer to https://cordova.apache.org/docs/en/latest/guide/cli/#installing-the-cordova-cli
 
