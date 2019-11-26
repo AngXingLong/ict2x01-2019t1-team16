@@ -7,9 +7,6 @@ GiaLey! is a cross-platform mobile application prototype that is built in collab
 ## Video
 URL NEEDED
 
-## Component Diagram
-![component_diagram](/readmeImages/component_diagram.png)
-
 ## Installation Guide (User)
 1. Download [gialey! moblie app.apk](https://github.com/AngXingLong/ict2x01-2019t1-team16/blob/master/gialey!%20moblie%20app.apk "gialey! moblie app.apk")
 2. Open APK
@@ -18,6 +15,9 @@ URL NEEDED
 5. Click Ok
 6. Click Allow
 7. Find and Start HelloCordova (GiaLey! App)
+
+## Component Diagram
+![component_diagram](/readmeImages/component_diagram.png)
 
 ## Installation Guide (Developer)
 1. Download [Node.js](https://nodejs.org/en/)
