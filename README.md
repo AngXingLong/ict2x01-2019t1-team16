@@ -1,6 +1,28 @@
----------------------------------------------------------------------------
-Installation guide/setup for Carnova android version
----------------------------------------------------------------------------
+
+
+## Introduction
+
+GiaLey! is a cross-platform mobile application prototype that is built in collaboration between Singapore Institute of Technology (SIT) and Land Transport Authority (LTA) to improve the walking commute experience during the First Mile and Last Mile portion (FMLM) of their journey. GiaLey! is a gamified routing app that will comprise elements of a role playing game, route planner and a rewards marketplace. A “ Hero” is a representation of a user’s gameplay character. By clocking a certain number of steps during a user’s walking commute, users can stand a chance to unlock a random equipment, which can then be used to upgrade his Hero. Subsequently, the user can send his/her Hero on expeditions to gather H-Tokens (An ingame virtual currency). H-Tokens can be used to redeem rewards from the reward marketplace. GiaLey! will also recommend a variety FMLM routes between two points on a map, allowing users to discover new routes. Since this application is targeted at only the FMLM portion of the journey, routes recommendation will only be based on the FM and LM specified by the user.
+
+## Video
+URL NEEDED
+
+## Component Diagram
+
+Component Diagram Needed
+
+a “Video” youtube url to a short video showcase of your prototype app
+
+## Installation Guide (User)
+1. Download [gialey! moblie app.apk](https://github.com/AngXingLong/ict2x01-2019t1-team16/blob/master/gialey!%20moblie%20app.apk "gialey! moblie app.apk")
+2. Open APK
+3. Go to settings
+4. Enable unknown sources installation
+5. Click Ok
+6. Click Allow
+7. Installation Complete
+
+## Installation Guide (Developer)
 1. Download [Node.js](https://nodejs.org/en/)
 2. Download [Android Studio](https://developer.android.com/studio)
 3. Download [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -59,3 +81,5 @@ Myphone
 '''
 cordova run android
 '''
+12. For more infor
+
