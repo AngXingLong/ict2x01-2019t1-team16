@@ -8,16 +8,13 @@ GiaLey! is a cross-platform mobile application prototype that is built in collab
 URL NEEDED
 
 ## Component Diagram
-
 Component Diagram Needed
-
-a “Video” youtube url to a short video showcase of your prototype app
 
 ## Installation Guide (User)
 1. Download [gialey! moblie app.apk](https://github.com/AngXingLong/ict2x01-2019t1-team16/blob/master/gialey!%20moblie%20app.apk "gialey! moblie app.apk")
 2. Open APK
-3. Go to settings
-4. Enable unknown sources installation
+3. Click on settings
+4. Click on Enable unknown sources installation
 5. Click Ok
 6. Click Allow
 7. Installation Complete
