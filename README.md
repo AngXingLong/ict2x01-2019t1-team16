@@ -10,13 +10,21 @@ URL NEEDED
 ## Installation Guide (User)
 1. Download [gialey! moblie app.apk](https://github.com/AngXingLong/ict2x01-2019t1-team16/blob/master/gialey!%20moblie%20app.apk "gialey! moblie app.apk")
 2. Open APK
+
 <kbd><img src="/readmeImages/instruction_1.png" height="500" /></kbd>
+
 3. Click on settings
+
 <kbd><img src="/readmeImages/instruction_2.png" height="500" /></kbd>
+
 4. Click on Enable unknown sources installation
+
 <kbd><img src="/readmeImages/instruction_3.png" height="500" /></kbd>
+
 5. Click Ok
+
 <kbd><img src="/readmeImages/instruction_4.png" height="500" /></kbd>
+
 6. Click Install
 7. Find and Start HelloCordova (GiaLey! App)
 
