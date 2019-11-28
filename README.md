@@ -7,6 +7,8 @@ GiaLey! is a cross-platform mobile application prototype that is built in collab
 ## Video
 https://youtu.be/o98vq2APTcs
 
+## APK Version Supported
+Android Version 7 and above
 
 ## Installation Guide (User)
 1. Download [gialey! moblie app.apk](https://github.com/AngXingLong/ict2x01-2019t1-team16/blob/master/gialey!%20moblie%20app.apk "gialey! moblie app.apk")
